@@ -94,9 +94,9 @@ Route::middleware('auth')->group(function () {
     Route::post('kas/transfer', [KasController::class, 'storeTransfer'])->name('kas.storeTransfer');
 
     // =====================================================
-    // LAPORAN - Manajer, Admin, Superuser
+    // LAPORAN - Semua role (termasuk staff)
     // =====================================================
-    Route::middleware('role:superuser,admin,manajer')->group(function () {
+    Route::middleware('role:superuser,admin,manajer,staff')->group(function () {
         Route::get('bukubesar', [BukuBesarController::class, 'index'])->name('bukubesar.index');
         Route::get('laporan', [LaporanController::class, 'index'])->name('laporan.index');
         Route::get('/laporan/neraca', [LaporanController::class, 'neraca'])->name('laporan.neraca');

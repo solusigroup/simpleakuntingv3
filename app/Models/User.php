@@ -143,11 +143,11 @@ class User extends Authenticatable
 
     /**
      * Check if user can view reports.
-     * Superuser, admin, and manajer can view reports.
+     * All roles can view reports.
      */
     public function canViewReports(): bool
     {
-        return $this->hasRole(['superuser', 'admin', 'manajer']);
+        return $this->hasRole(['superuser', 'admin', 'manajer', 'staff']);
     }
 
     /**
