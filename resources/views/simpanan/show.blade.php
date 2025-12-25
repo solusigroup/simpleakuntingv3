@@ -23,7 +23,7 @@
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Tanggal:</span>
-                    <strong>{{ $simpanan->tanggal->format('d/m/Y') }}</strong>
+                    <strong>{{ \Carbon\Carbon::parse($simpanan->tanggal)->format('d/m/Y') }}</strong>
                 </li>
                 <li class="list-group-item d-flex justify-content-between">
                     <span>Jenis Transaksi:</span>
@@ -90,7 +90,7 @@
             <div class="card-body">
                 <p class="mb-2">
                     <strong>No. Jurnal:</strong> {{ $simpanan->jurnal->no_transaksi }}<br>
-                    <strong>Tanggal:</strong> {{ $simpanan->jurnal->tanggal->format('d/m/Y') }}
+                    <strong>Tanggal:</strong> {{ \Carbon\Carbon::parse($simpanan->jurnal->tanggal)->format('d/m/Y') }}
                 </p>
                 <table class="table table-sm table-bordered mb-0">
                     <thead class="table-light">
