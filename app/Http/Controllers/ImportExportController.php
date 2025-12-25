@@ -219,6 +219,16 @@ class ImportExportController extends Controller
                             $value = null;
                         }
                         
+                        // Convert date formats (DD-MM-YYYY or DD/MM/YYYY) to MySQL format (YYYY-MM-DD)
+                        if ($value !== null && preg_match('/tanggal|date/i', $col)) {
+                            if (preg_match('/^(\d{2})[-\/](\d{2})[-\/](\d{4})$/', $value, $matches)) {
+                                // DD-MM-YYYY or DD/MM/YYYY
+                                $value = $matches[3] . '-' . $matches[2] . '-' . $matches[1];
+                            } elseif (preg_match('/^(\d{4})[-\/](\d{2})[-\/](\d{2})$/', $value)) {
+                                // Already in YYYY-MM-DD format, keep as is
+                            }
+                        }
+                        
                         $data[$col] = $value;
                     }
 
