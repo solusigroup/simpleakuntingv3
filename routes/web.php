@@ -53,7 +53,6 @@ Route::middleware('auth')->group(function () {
         Route::get('persediaan', [PersediaanController::class, 'index'])->name('persediaan.index');
         Route::get('persediaan/{persediaan}', [PersediaanController::class, 'show'])->name('persediaan.show');
         Route::get('akun', [AkunController::class, 'index'])->name('akun.index');
-        Route::get('akun/{akun}', [AkunController::class, 'show'])->name('akun.show');
     });
     
     // Write routes for admin+ (create, store, edit, update, destroy)
