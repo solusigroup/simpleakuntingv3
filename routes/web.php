@@ -140,9 +140,9 @@ Route::middleware('auth')->group(function () {
     Route::get('simpanan-tarik', [\App\Http\Controllers\SimpananController::class, 'tarik'])->name('simpanan.tarik');
     Route::get('simpanan-kartu/{id_anggota}', [\App\Http\Controllers\SimpananController::class, 'kartu'])->name('simpanan.kartu');
 
-    // Pinjaman
-    Route::resource('pinjaman', \App\Http\Controllers\PinjamanController::class);
+    // Pinjaman - simulasi harus SEBELUM resource agar tidak tertangkap oleh {pinjaman}
     Route::post('pinjaman/simulasi', [\App\Http\Controllers\PinjamanController::class, 'simulasi'])->name('pinjaman.simulasi');
+    Route::resource('pinjaman', \App\Http\Controllers\PinjamanController::class);
     Route::post('pinjaman/{id}/submit', [\App\Http\Controllers\PinjamanController::class, 'submit'])->name('pinjaman.submit');
     Route::get('pinjaman/{id}/pencairan', [\App\Http\Controllers\PinjamanController::class, 'pencairanForm'])->name('pinjaman.pencairan');
     Route::post('pinjaman/{id}/cairkan', [\App\Http\Controllers\PinjamanController::class, 'cairkan'])->name('pinjaman.cairkan');
